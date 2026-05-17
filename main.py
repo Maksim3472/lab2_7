@@ -83,7 +83,7 @@ async def back_to_doctor(callback: types.CallbackQuery, state: FSMContext):
     kb.button(text="Терапевт", callback_data="terapevt")
     kb.button(text="Хирург", callback_data="hirurg")
     kb.button(text="Кардиолог", callback_data="kardiolog")
-    kb.button(text="⬅️ Изменить ФИО", callback_data="to_name")
+    kb.button(text="Изменить ФИО", callback_data="to_name")
     kb.adjust(1)
 
     await callback.message.edit_text(f"Пациент: {data['user_name']}\n\nВыберите врача:", reply_markup=kb.as_markup())
