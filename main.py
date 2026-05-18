@@ -1,4 +1,3 @@
-import asyncio
 from aiogram import Bot, Dispatcher, types
 from aiogram.filters import Command
 from aiogram.fsm.context import FSMContext
@@ -35,9 +34,9 @@ async def get_name(message: types.Message, state: FSMContext):
 
     # Создаем кнопки выбора врача
     kb = InlineKeyboardBuilder()
-    kb.button(text="Терапевт", callback_data="terapevt")
-    kb.button(text="Хирург", callback_data="hirurg")
-    kb.button(text="Кардиолог", callback_data="kardiolog")
+    kb.button(text="Терапевт", callback_data="Терапевт")
+    kb.button(text="Хирург", callback_data="Хирург")
+    kb.button(text="Кардиолог", callback_data="Кардиолог")
     kb.button(text="Изменить ФИО", callback_data="to_name") # кнопка назад
     kb.adjust(1)
 
@@ -80,9 +79,9 @@ async def back_to_doctor(callback: types.CallbackQuery, state: FSMContext):
 
     # Заново создаем клавиатуру врачей для старого сообщения
     kb = InlineKeyboardBuilder()
-    kb.button(text="Терапевт", callback_data="terapevt")
-    kb.button(text="Хирург", callback_data="hirurg")
-    kb.button(text="Кардиолог", callback_data="kardiolog")
+    kb.button(text="Терапевт", callback_data="Терапевт")
+    kb.button(text="Хирург", callback_data="Хирург")
+    kb.button(text="Кардиолог", callback_data="Кардиолог")
     kb.button(text="Изменить ФИО", callback_data="to_name")
     kb.adjust(1)
 
@@ -105,8 +104,5 @@ async def get_time(callback: types.CallbackQuery, state: FSMContext):
     await state.clear() # очищаем бота
 
 # Запуск бота
-async def main():
-    await dp.start_polling(bot)
-
 if __name__ == '__main__':
-    asyncio.run(main())
+    dp.run_polling(bot)
